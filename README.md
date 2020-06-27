@@ -1,10 +1,10 @@
 
 # Content Based Image Retrieval System for Inria Holidays Dataset
-This is explanation of the image retrieval system for all sample images on [Inria Holidays Dataset](http://lear.inrialpes.fr/~jegou/data.php).
+This is an explanation of the image retrieval system for all sample images on [Inria Holidays Dataset](http://lear.inrialpes.fr/~jegou/data.php).
 
 ## Dataset Preparation
 
-The dataset has 500 different groups.The first images for each group are used as query image, others are image database.
+The dataset has 500 different groups. The first images for each group are used as query images, others are image database.
 For this reason, two different folders (query_images and data_images) are created under ./dataset/images/ folder.
 
 ## Feature Extraction
@@ -15,7 +15,7 @@ All images from the given in [Inria Holidays Dataset](http://lear.inrialpes.fr/~
 
 ## Nearest Neighbor Approach
 
-Using features for each image, the different k numbers are used in the script ./2_KNN.py to obtaine top k nearest (related) images from the database. It saves the results under ./results folder.
+Using features for each image, the different k numbers are used in the script ./2_KNN.py to obtain top k nearest (related) images from the database. It saves the results under ./results folder.
 
 
 
@@ -25,12 +25,12 @@ To evaluate the k-means approach, the 4_k-means.py is used for the dataset. The 
 
 
 ## Evaluation
-Two different evaluation metric is presented in this github folder.
+Two different evaluation metric is presented in this GitHub folder.
 
-### Ranking Average Precision Score for Nearest Neigbor Approach
+### Ranking Average Precision Score for Nearest Neighbor Approach
 
-In order to evalaute the nearest model with ranking average score, 3_ranking_average_score.py script is used under ./src folder.
+In order to evaluate the nearest model with ranking average score, 3_ranking_average_score.py script is used under ./src folder.
 
 ### mAP Evaluation 
 
-To obtain the mAP evalutaion metric for each results files which is presented in the dataset,  ./eval_holidays/run_map_metric.py. script is used. It utilizes holidays_map.py script to apply the mAP evaluation metric on each result files.
+To obtain the mAP evaluation metric for each result files which is presented in the dataset,  ./eval_holidays/run_map_metric.py. the script is used. It utilizes holidays_map.py script to apply the mAP evaluation metric on each result file.
