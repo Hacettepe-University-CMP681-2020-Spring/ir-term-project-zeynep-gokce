@@ -42,7 +42,6 @@ def load_query(model):
   for image_name in query_dirs:
     
     feature = np.load(os.path.join(query, image_name))
-    #print(query_feature.shape)
     query_id = int(int(image_name.replace(".npy",""))/100)
     query_feature.append(feature.tolist())
     query_labels.append(query_id)
@@ -51,7 +50,6 @@ def load_query(model):
   query_feature = np.array(query_feature)
   query_labels = np.array(query_labels)
   query_name = np.array(query_name)
-  #print(query_name)
   return query_feature,query_labels,query_name
 
 
@@ -69,8 +67,6 @@ def retrieve_closest_elements(test_code, test_label, learned_codes,model):
     distances = np.array(distances)
     learned_code_index = np.arange(nb_elements)
     labels = np.copy(data_labels).astype('float32')
-    #print(data_labels)
-    #print(test_label)
     labels[labels != test_label] = -1
     labels[labels == test_label] = 1
     labels[labels == -1] = 0
@@ -79,7 +75,6 @@ def retrieve_closest_elements(test_code, test_label, learned_codes,model):
 
 
     sorted_distances = sorted_distance_with_labels[:,0][-1] - sorted_distance_with_labels[:, 0]
-    #print("2) ",sorted_distances)
     sorted_labels = sorted_distance_with_labels[:, 1]
     sorted_indexes = sorted_distance_with_labels[:, 2]
     return sorted_distances, sorted_labels, sorted_indexes 
@@ -103,8 +98,6 @@ def compute_average_precision_score(test_codes, test_labels, learned_codes, n_sa
     out_distances_file_name = '../result_images/out_distances_{}'.format(n_samples)
     out_distances = np.array(out_distances)
     np.save(out_distances_file_name, out_distances)
-    #print("out_labels : ",out_labels)
-    #print("out_distances : ",out_distances)
     score = label_ranking_average_precision_score(out_labels, out_distances)
     scores.append(score)
     return score
@@ -171,12 +164,12 @@ def test_model(n_test_samples, n_train_samples,model):
     np.random.shuffle(indexes)
     indexes = indexes[:n_test_samples]
 
-    print('Start computing score for {} train samples'.format(n_train_samples))
+    #print('Start computing score for {} train samples'.format(n_train_samples))
     t1 = time.time()
     score = compute_average_precision_score(query_feature[indexes], query_labels[indexes], data_feature, n_train_samples,model)
     t2 = time.time()
-    print('Score computed in: ', t2-t1)
-    print('Model score:', score)
+    #print('Score computed in: ', t2-t1)
+    #print('Model score:', score)
     return score
 
 
